@@ -15,7 +15,7 @@ resource "aws_instance" "instance" {
 
 resource "aws_route53_record" "record" {
   zone_id = "Z09760323G7SC2VABFTOY"
-  name    = "chocolux.tadikonda.onilne"
+  name    = "chocolux"
   type    = "A"
   ttl     = 30
   records = [aws_instance.instance.public_ip]
