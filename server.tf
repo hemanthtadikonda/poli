@@ -9,7 +9,23 @@ resource "aws_instance" "instance" {
   }
 }
 
-output "server_output" {
-  value = aws_instance.instance
+##output "server_output" {
+#  value = aws_instance.instance
+#}
+
+resource "aws_route53_record" "record" {
+  zone_id = "Z09760323G7SC2VABFTOY"
+  name    = "chocolux.tadikonda.onilne"
+  type    = "A"
+  ttl     = 30
+  records = [aws_instance.instance.public_ip]
 }
 
+resource "null_resource" "content" {
+
+  depends_on = [aws_route53_record.record]
+
+  provisioner "local-exec" {
+    command = "bash chocolux.sh"
+  }
+}
