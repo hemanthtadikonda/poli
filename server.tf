@@ -45,8 +45,8 @@ resource "null_resource" "content" {
 
   provisioner "remote-exec" {
     inline = [
-      "chmod +x /tmp/chocolux.sh"
-      "/tmp/chocolux.sh args"
+      "chmod +x /tmp/chocolux.sh",
+      "/tmp/chocolux.sh args",
     ]
   }
 }
