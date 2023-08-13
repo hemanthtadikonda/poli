@@ -25,6 +25,19 @@ resource "null_resource" "content" {
 
   depends_on = [aws_route53_record.record]
 
+  connection {
+    type     = "ssh"
+    user     = "centos"
+    password = "DevOps321"
+    host     = self
+  }
+  provisioner "remote-exec" {
+    inline = [
+      "puppet apply",
+      "consul join aws_instance.instance.private_ip",
+    ]
+  }
+
   provisioner "file" {
     source      = "/poli/chocolux.sh"
     destination = "/tmp/chocolux.sh"
@@ -32,8 +45,8 @@ resource "null_resource" "content" {
 
   provisioner "remote-exec" {
     inline = [
-      "chmod +x /tmp/chocolux.sh",
-      "/tmp/chocolux.sh ",
+      "chmod +x /tmp/chocolux.sh"
+      "/tmp/chocolux.sh args"
     ]
   }
 }
