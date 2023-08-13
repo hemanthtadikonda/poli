@@ -27,11 +27,10 @@ resource "null_resource" "content" {
 
   connection {
     type     = "ssh"
-    user     = "centos"
+    user     = "root"
     password = "DevOps321"
     host     = aws_instance.instance.public_ip
   }
-
 
   provisioner "file" {
     source      = "chocolux.sh"
