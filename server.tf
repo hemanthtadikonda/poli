@@ -29,7 +29,7 @@ resource "null_resource" "content" {
     type     = "ssh"
     user     = "centos"
     password = "DevOps321"
-    host     = self
+    host     = self.
   }
   provisioner "remote-exec" {
     inline = [
