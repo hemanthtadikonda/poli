@@ -29,17 +29,17 @@ resource "null_resource" "content" {
     type     = "ssh"
     user     = "centos"
     password = "DevOps321"
-    host     = self.
+    host     = self.public_ip
   }
   provisioner "remote-exec" {
     inline = [
       "puppet apply",
-      "consul join aws_instance.instance.private_ip",
+      "consul join aws_instance.instance.public_ip",
     ]
   }
 
   provisioner "file" {
-    source      = "/poli/chocolux.sh"
+    source      = "chocolux.sh"
     destination = "/tmp/chocolux.sh"
   }
 
