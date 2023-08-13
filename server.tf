@@ -25,7 +25,15 @@ resource "null_resource" "content" {
 
   depends_on = [aws_route53_record.record]
 
-  provisioner "local-exec" {
-    command = "bash chocolux.sh"
+  provisioner "file" {
+    source      = "chocolux.sh"
+    destination = "/tmp/chocolux.sh"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "chmod +x /tmp/chocolux.sh",
+      "/tmp/chocolux.sh ",
+    ]
   }
 }
