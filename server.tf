@@ -26,7 +26,7 @@ resource "null_resource" "content" {
   depends_on = [aws_route53_record.record]
 
   provisioner "file" {
-    source      = "chocolux.sh"
+    source      = "/poli/chocolux.sh"
     destination = "/tmp/chocolux.sh"
   }
 
