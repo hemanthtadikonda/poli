@@ -12,3 +12,4 @@ resource "aws_instance" "instance" {
 output "server_output" {
   value = aws_instance.instance
 }
+
