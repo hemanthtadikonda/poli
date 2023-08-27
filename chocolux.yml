@@ -25,7 +25,7 @@
 
     - name: Copy  app content file
       ansible.builtin.copy:
-        src: /usr/share/nginx/html/chocolux-html/*
+        src: /usr/share/nginx/html/chocolux-html/
         dest: /usr/share/nginx/html
 
     - name: Restart nginx
