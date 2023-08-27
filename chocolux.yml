@@ -23,7 +23,7 @@
         dest: /usr/share/nginx/html
         remote_src: yes
 
-    - name: Copy file with owner and permissions
+    - name: Copy  app content file
       ansible.builtin.copy:
         src: /usr/share/nginx/html/chocolux-html/*
         dest: /usr/share/nginx/html
