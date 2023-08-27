@@ -4,7 +4,6 @@ resource "aws_instance" "main" {
   vpc_security_group_ids  = [aws_security_group.allow_all.id]
   tags                    = { Name = "chocolux-ec2"}
   user_data               = file("${path.module}/userdata.sh")
-
 }
 
 resource "aws_security_group" "allow_all" {
