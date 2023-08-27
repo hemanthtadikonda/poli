@@ -1,0 +1,30 @@
+name: Chocolux configuration
+hosts: all
+become: true
+tasks:
+  - name: Install Nginx
+    ansible.builtin.yum:
+      name: Nginx
+      state: installed
+
+  - name: Recursively remove directory
+    ansible.builtin.file:
+      path: /usr/share/nginx/html
+      state: absent
+
+  - name: Create a APP content directory
+    ansible.builtin.file:
+      path: /usr/share/nginx/html
+      state: directory
+
+  - name: Download & Extract
+    ansible.builtin.unarchive:
+      src: https://www.free-css.com/assets/files/free-css-templates/download/page293/chocolux.zip
+      dest: /usr/share/nginx/html
+      remote_src: yes
+
+  - name: Restart nginx
+    ansible.builtin.systemd:
+      name: nginx
+      state: started
+      enabled: true
