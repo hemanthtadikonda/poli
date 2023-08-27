@@ -33,7 +33,7 @@ resource "aws_security_group" "allow_all" {
   }
 }
 
-resource "aws_route53_record" "record" {
+resource "aws_route53_record" "main" {
   zone_id = var.zone_id
   name    = "chocolux"
   type    = "A"
